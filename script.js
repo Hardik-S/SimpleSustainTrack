@@ -1,15 +1,25 @@
 // Function to calculate carbon footprint and animate the tree
 function calculateFootprint() {
-    // Calculate carbon footprint
-    const distance = parseFloat(document.getElementById('distance').value) || 0;
-    const footprint = distance * 0.1;
-    document.getElementById('result').innerHTML = `Carbon Footprint: ${footprint.toFixed(2)} kg CO2`;
-
-    // Reset all leaves
+    const distanceInput = document.getElementById('distance').value.trim();
+    const result = document.getElementById('result');
     const leaves = document.querySelectorAll('.leaf');
+
+    // Reset all leaves before validating so a bad follow-up entry never leaves
+    // the previous footprint animation on screen.
     leaves.forEach(leaf => {
         leaf.classList.remove('falling');
     });
+
+    // parseFloat accepts partial values such as "12abc"; the tracker should only
+    // calculate from a complete, finite, non-negative kilometre value.
+    const distance = Number(distanceInput);
+    if (distanceInput === '' || !Number.isFinite(distance) || distance < 0) {
+        result.textContent = 'Enter a valid non-negative distance in kilometres.';
+        return;
+    }
+
+    const footprint = distance * 0.1;
+    result.textContent = `Carbon Footprint: ${footprint.toFixed(2)} kg CO2`;
 
     // Determine number of falling leaves based on footprint
     let numFalling;
