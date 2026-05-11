@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SimpleSustainTrack Modern</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <main id="main-content" class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Legacy repo rebuild</p>
+      <h1>SimpleSustainTrack Modern</h1>
+      <p class="hero-copy">
+        A cleaner, keyboard-friendly carbon tracker that keeps the original behavior
+        while adding transport profiles, saved runs, and readable UX affordances.
+      </p>
+    </header>
+
+    <section class="grid">
+      <article class="panel controls">
+        <h2>Trip impact calculator</h2>
+        <p class="panel-note">Original logic preserved: non-finite, empty, or negative distances are rejected.</p>
+
+        <form id="footprint-form" class="form-stack">
+          <label for="distance" class="field">
+            <span>Distance</span>
+            <input id="distance" name="distance" type="text" inputmode="decimal" placeholder="e.g. 12.5" autocomplete="off" />
+          </label>
+
+          <label for="unit" class="field">
+            <span>Unit</span>
+            <select id="unit" name="unit">
+              <option value="km">Kilometres</option>
+              <option value="mi">Miles</option>
+            </select>
+          </label>
+
+          <label for="mode" class="field">
+            <span>Transport mode</span>
+            <select id="mode" name="mode">
+              <option value="legacy" selected>Legacy default (0.1)</option>
+              <option value="car">Car (0.12)</option>
+              <option value="bus">Bus (0.08)</option>
+              <option value="train">Train (0.04)</option>
+              <option value="bike">Bike / Walk (0.00)</option>
+            </select>
+          </label>
+
+          <div class="button-row">
+            <button type="button" data-preset="5">5</button>
+            <button type="button" data-preset="12.5">12.5</button>
+            <button type="button" data-preset="50">50</button>
+            <button type="button" data-preset="120">120</button>
+          </div>
+
+          <button id="calculate" type="submit">Calculate impact</button>
+        </form>
+
+        <section class="result-area" aria-live="polite">
+          <p id="result" class="result">Enter a distance and run calculate.</p>
+          <p id="impact-level" class="impact-level">Impact: not computed yet.</p>
+        </section>
+
+        <div class="compact-actions">
+          <button id="clear-history" type="button">Clear history</button>
+          <button id="download-history" type="button">Export run history</button>
+        </div>
+      </article>
+
+      <article class="panel tree-panel">
+        <h2>Impact visual</h2>
+        <p class="panel-note">The same leaf-fall animation thresholds are preserved from the legacy UI.</p>
+        <div id="tree-wrap" class="tree-wrap" aria-label="Tree impact visual">
+          <div class="tree-trunk"></div>
+          <span class="leaf" id="leaf-0" aria-hidden="true"></span>
+          <span class="leaf" id="leaf-1" aria-hidden="true"></span>
+          <span class="leaf" id="leaf-2" aria-hidden="true"></span>
+          <span class="leaf" id="leaf-3" aria-hidden="true"></span>
+          <span class="leaf" id="leaf-4" aria-hidden="true"></span>
+          <span class="leaf" id="leaf-5" aria-hidden="true"></span>
+        </div>
+      </article>
+
+      <article class="panel history-panel">
+        <h2>Recent runs</h2>
+        <div id="history-empty" class="empty-state">No runs saved yet.</div>
+        <ul id="history-list" class="history-list" aria-live="polite"></ul>
+      </article>
+
+      <article class="panel news-panel">
+        <h2>Sustainability pulse</h2>
+        <p class="panel-note">Safe fallback headlines included, so no API key is required.</p>
+        <ul id="news-list" class="news-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

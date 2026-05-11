@@ -1,0 +1,281 @@
+:root {
+  --bg: #060918;
+  --panel: #11152a;
+  --panel-soft: #181f3d;
+  --text: #f6f7ff;
+  --muted: #adb2cc;
+  --accent: #67e8f9;
+  --accent-2: #7bf39a;
+  --border: #2e365a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  background: radial-gradient(circle at top left, #1b2050, var(--bg) 55%);
+  color: var(--text);
+}
+
+body {
+  padding: 2rem 1rem 3rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.5rem;
+  background: var(--accent-2);
+  color: #081120;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  z-index: 10;
+}
+
+.page-shell {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.hero {
+  margin-bottom: 1.2rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.hero-copy {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  max-width: 72ch;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.panel {
+  background: linear-gradient(150deg, var(--panel), var(--panel-soft));
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 14px 36px #00000045;
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.02rem;
+}
+
+.panel-note {
+  margin: 0.45rem 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.form-stack {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+label span {
+  color: var(--muted);
+}
+
+input,
+select,
+button {
+  font: inherit;
+  border-radius: 0.55rem;
+  border: 1px solid #2c355d;
+}
+
+input,
+select {
+  height: 42px;
+  padding: 0.5rem 0.7rem;
+  background: #090e24;
+  color: var(--text);
+}
+
+button {
+  height: 40px;
+  color: #081120;
+  background: linear-gradient(135deg, var(--accent), #7ad7ff);
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 120ms ease;
+}
+
+button:hover,
+button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.button-row button {
+  height: 34px;
+  font-size: 0.82rem;
+  background: linear-gradient(135deg, #d0f4ff, #d7ffe4);
+}
+
+.result-area {
+  margin-top: 0.6rem;
+}
+
+.result {
+  margin: 0.25rem 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.impact-level {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.compact-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.compact-actions button {
+  flex: 1;
+  height: 36px;
+}
+
+.history-list,
+.news-list {
+  list-style: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+}
+
+.history-item,
+.news-item {
+  padding: 0.55rem 0.55rem;
+  border-top: 1px dashed #2f3559;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.history-item:last-child,
+.news-item:last-child {
+  border-bottom: 1px dashed #2f3559;
+}
+
+.history-item .meta {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.empty-state {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.tree-panel {
+  min-height: 230px;
+}
+
+.tree-wrap {
+  margin-top: 0.9rem;
+  width: 100%;
+  height: 190px;
+  position: relative;
+  border-radius: 0.8rem;
+  border: 1px dashed #2d3670;
+  background:
+    linear-gradient(to top, #0f1f4f, #18306a);
+  overflow: hidden;
+}
+
+.tree-trunk {
+  width: 24px;
+  height: 112px;
+  background: linear-gradient(to bottom, #8a6e4b, #574131);
+  border-radius: 12px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+}
+
+.leaf {
+  width: 24px;
+  height: 14px;
+  border-radius: 8px;
+  background: #6ef0a8;
+  position: absolute;
+  left: 48%;
+  top: 52px;
+  transform: translateX(-50%);
+  opacity: 1;
+}
+
+#leaf-0 { left: 42%; }
+#leaf-1 { left: 55%; }
+#leaf-2 { left: 39%; top: 38px; }
+#leaf-3 { left: 60%; top: 38px; }
+#leaf-4 { left: 44%; top: 24px; }
+#leaf-5 { left: 57%; top: 24px; }
+
+.leaf.falling {
+  animation: fall 1.8s ease-in-out forwards;
+}
+
+@keyframes fall {
+  from {
+    transform: translate(-50%, 0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, 95px) rotate(var(--rotation, 0deg));
+    opacity: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  body {
+    padding-top: 1.2rem;
+  }
+}
